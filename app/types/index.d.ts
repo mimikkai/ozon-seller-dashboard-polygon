@@ -1,31 +1,44 @@
-import type { AvatarProps } from '@nuxt/ui'
+export type ProductStatus = 'draft' | 'pending' | 'active' | 'rejected'
 
-export type UserStatus = 'subscribed' | 'unsubscribed' | 'bounced'
-export type SaleStatus = 'paid' | 'failed' | 'refunded'
+export type VatRate = '0' | '10' | '20'
 
-export interface User {
-  id: number
-  name: string
-  email: string
-  avatar?: AvatarProps
-  status: UserStatus
-  location: string
+export type ShippingTemplate = 'standard' | 'express' | 'pickup' | 'heavy'
+
+export type PackageType = 'box' | 'bag' | 'envelope' | 'pallet'
+
+export interface ProductDimensions {
+  length: number
+  width: number
+  height: number
 }
 
-export interface Mail {
-  id: number
-  unread?: boolean
-  from: User
-  subject: string
-  body: string
-  date: string
+export interface Product {
+  id: string
+  name: string
+  offerId: string
+  categoryId: string
+  brand: string
+  price: number
+  oldPrice?: number
+  vat: VatRate
+  stock: number
+  sku?: string
+  shippingTemplate: ShippingTemplate
+  packageType: PackageType
+  weight: number
+  dimensions: ProductDimensions
+  description: string
+  mainImage?: string
+  gallery?: string[]
+  status: ProductStatus
+  createdAt: string
+  updatedAt: string
 }
 
-export interface Member {
-  name: string
-  username: string
-  role: 'member' | 'owner'
-  avatar: AvatarProps
+export interface ProductCategory {
+  id: string
+  label: string
+  parent?: string
 }
 
 export interface Stat {
@@ -34,22 +47,6 @@ export interface Stat {
   value: number | string
   variation: number
   formatter?: (value: number) => string
-}
-
-export interface Sale {
-  id: string
-  date: string
-  status: SaleStatus
-  email: string
-  amount: number
-}
-
-export interface Notification {
-  id: number
-  unread?: boolean
-  sender: User
-  body: string
-  date: string
 }
 
 export type Period = 'daily' | 'weekly' | 'monthly'

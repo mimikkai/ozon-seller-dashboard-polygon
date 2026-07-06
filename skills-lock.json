@@ -1,6 +1,150 @@
 {
   "version": 1,
   "skills": {
+    "aif-build-automation": {
+      "source": "lee-to/ai-factory",
+      "sourceType": "github",
+      "skillPath": "skills/aif-build-automation/SKILL.md",
+      "computedHash": "e35e5de95a4291c212daf0c3c3b134691d50d7869469f38b2b0ec263fce561fa"
+    },
+    "aif-ci": {
+      "source": "lee-to/ai-factory",
+      "sourceType": "github",
+      "skillPath": "skills/aif-ci/SKILL.md",
+      "computedHash": "09900b95d8581200bb8a7d498805366b45f7c937b9609c6559d47015f3e07937"
+    },
+    "aif-commit": {
+      "source": "lee-to/ai-factory",
+      "sourceType": "github",
+      "skillPath": "skills/aif-commit/SKILL.md",
+      "computedHash": "c885ad8ee4cf236b77f0e4b25940789a7773a572a3aa4d3f6d0469b0a8794539"
+    },
+    "aif-distillation": {
+      "source": "lee-to/ai-factory",
+      "sourceType": "github",
+      "skillPath": "skills/aif-distillation/SKILL.md",
+      "computedHash": "0274b5d564f2b20f3fe284f80ef4d83e12ad142f6c7c1a4967b3686948a7fa6f"
+    },
+    "aif-dockerize": {
+      "source": "lee-to/ai-factory",
+      "sourceType": "github",
+      "skillPath": "skills/aif-dockerize/SKILL.md",
+      "computedHash": "23cf3f76480463eba3c54e74afd565ea3386563bd0b932ac46ddc94da2b649c3"
+    },
+    "aif-docs": {
+      "source": "lee-to/ai-factory",
+      "sourceType": "github",
+      "skillPath": "skills/aif-docs/SKILL.md",
+      "computedHash": "64e2f9f36bb3ddd628145eaf98b152b24210d31bf95d1c6ecd219fd528e7e6b8"
+    },
+    "aif-evolve": {
+      "source": "lee-to/ai-factory",
+      "sourceType": "github",
+      "skillPath": "skills/aif-evolve/SKILL.md",
+      "computedHash": "4b886fc480694aeb1ef9119362002b3c8a12edaee64bc27d67be1721e3e6ac75"
+    },
+    "aif-explore": {
+      "source": "lee-to/ai-factory",
+      "sourceType": "github",
+      "skillPath": "skills/aif-explore/SKILL.md",
+      "computedHash": "8a132dc7af7e32bcefcbc46b923140e135960ea54a7479846fc5539999b7aed8"
+    },
+    "aif-fix": {
+      "source": "lee-to/ai-factory",
+      "sourceType": "github",
+      "skillPath": "skills/aif-fix/SKILL.md",
+      "computedHash": "2d1496d1f44ffb1cf68c045824b50eb4bcb89772641e76eb6a574c870699a2f2"
+    },
+    "aif-grounded": {
+      "source": "lee-to/ai-factory",
+      "sourceType": "github",
+      "skillPath": "skills/aif-grounded/SKILL.md",
+      "computedHash": "57a401e66bbf40ac565f0ca7f1f57aeb9f47050ff4d512483d4cfaa086a68321"
+    },
+    "aif-implement": {
+      "source": "lee-to/ai-factory",
+      "sourceType": "github",
+      "skillPath": "skills/aif-implement/SKILL.md",
+      "computedHash": "67073fa1ec83d0a6d6d14cc823129a54c8856cf70809b506977776b98fb29994"
+    },
+    "aif-improve": {
+      "source": "lee-to/ai-factory",
+      "sourceType": "github",
+      "skillPath": "skills/aif-improve/SKILL.md",
+      "computedHash": "198e86c0c8f60c382a4b45123453ecbbd1df51dfaad9f2fba7908e121d8cfb49"
+    },
+    "aif-loop": {
+      "source": "lee-to/ai-factory",
+      "sourceType": "github",
+      "skillPath": "skills/aif-loop/SKILL.md",
+      "computedHash": "dd9837d67b1d8d243c13e1a0d7bcd492cc52a854c1805bfc232e89e776eb89f1"
+    },
+    "aif-plan": {
+      "source": "lee-to/ai-factory",
+      "sourceType": "github",
+      "skillPath": "skills/aif-plan/SKILL.md",
+      "computedHash": "8ce9f2fbc2d2572fe3a49093134eb790fcf319ab07090ee280c1a4fc8fb89f9f"
+    },
+    "aif-qa": {
+      "source": "lee-to/ai-factory",
+      "sourceType": "github",
+      "skillPath": "skills/aif-qa/SKILL.md",
+      "computedHash": "1ea0308468df3e3337a8e4c06f40fa8bbd399847b9f9696ef79ab81b5fff8cea"
+    },
+    "aif-qa-check": {
+      "source": "lee-to/ai-factory",
+      "sourceType": "github",
+      "skillPath": "skills/aif-qa-check/SKILL.md",
+      "computedHash": "b6c3f4fa07fd2bcd64be53a2f85bada53d45dcffee85ce1f1593bbd6e5bd55fa"
+    },
+    "aif-reference": {
+      "source": "lee-to/ai-factory",
+      "sourceType": "github",
+      "skillPath": "skills/aif-reference/SKILL.md",
+      "computedHash": "7c432e18e62c90a68bbdb060b1fcff6a578617bd5a40bd66ffc5be099d47909f"
+    },
+    "aif-review": {
+      "source": "lee-to/ai-factory",
+      "sourceType": "github",
+      "skillPath": "skills/aif-review/SKILL.md",
+      "computedHash": "0e8807deca382cec1186d41371603999d83724bbf503a679283827654bfbeb77"
+    },
+    "aif-roadmap": {
+      "source": "lee-to/ai-factory",
+      "sourceType": "github",
+      "skillPath": "skills/aif-roadmap/SKILL.md",
+      "computedHash": "395763e47571d95f542171668fd9334acd40c23f924ef5ced4bd8569cc410edd"
+    },
+    "aif-rules": {
+      "source": "lee-to/ai-factory",
+      "sourceType": "github",
+      "skillPath": "skills/aif-rules/SKILL.md",
+      "computedHash": "5d5bd65b082c1921c562d5300d337aeb9680bb892de9069a9a79247f87a3449e"
+    },
+    "aif-rules-check": {
+      "source": "lee-to/ai-factory",
+      "sourceType": "github",
+      "skillPath": "skills/aif-rules-check/SKILL.md",
+      "computedHash": "2ee28bfac0c943ac4bd14bea0b50b1bff8827cd08de983ed436948c916bdd650"
+    },
+    "aif-security-checklist": {
+      "source": "lee-to/ai-factory",
+      "sourceType": "github",
+      "skillPath": "skills/aif-security-checklist/SKILL.md",
+      "computedHash": "a364db4d3b11e5687f2f9e765888614fd53e69182b84ebd756e6c3247b29d4ea"
+    },
+    "aif-skill-generator": {
+      "source": "lee-to/ai-factory",
+      "sourceType": "github",
+      "skillPath": "skills/aif-skill-generator/SKILL.md",
+      "computedHash": "442c023d9b1d86b7cb1cba1dfa99a6860dc0b83314678c88d93d9d4b913a7244"
+    },
+    "aif-verify": {
+      "source": "lee-to/ai-factory",
+      "sourceType": "github",
+      "skillPath": "skills/aif-verify/SKILL.md",
+      "computedHash": "bb9b98146ece34a505439571b85538f6d357f6c001738a756b960e5eebe6a45d"
+    },
     "nuxt-ui": {
       "source": "nuxt/ui",
       "sourceType": "github",
