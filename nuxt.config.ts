@@ -27,5 +27,17 @@ export default defineNuxtConfig({
         braceStyle: '1tbs'
       }
     }
+  },
+
+  // GitHub Pages configuration
+  nitro: {
+    output: {
+      dir: 'dist'
+    }
+  },
+
+  // Set base URL for GitHub Pages (repo name)
+  app: {
+    baseURL: '/ozon-seller-dashboard-polygon/'
   }
 })
