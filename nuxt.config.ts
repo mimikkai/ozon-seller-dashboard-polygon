@@ -10,6 +10,11 @@ export default defineNuxtConfig({
     enabled: true
   },
 
+  // Set base URL for GitHub Pages (repo name)
+  app: {
+    baseURL: '/ozon-seller-dashboard-polygon/'
+  },
+
   css: ['~/assets/css/main.css'],
 
   routeRules: {
@@ -20,15 +25,6 @@ export default defineNuxtConfig({
 
   compatibilityDate: '2026-06-30',
 
-  eslint: {
-    config: {
-      stylistic: {
-        commaDangle: 'never',
-        braceStyle: '1tbs'
-      }
-    }
-  },
-
   // GitHub Pages configuration
   nitro: {
     output: {
@@ -36,8 +32,12 @@ export default defineNuxtConfig({
     }
   },
 
-  // Set base URL for GitHub Pages (repo name)
-  app: {
-    baseURL: '/ozon-seller-dashboard-polygon/'
+  eslint: {
+    config: {
+      stylistic: {
+        commaDangle: 'never',
+        braceStyle: '1tbs'
+      }
+    }
   }
 })
