@@ -2,48 +2,55 @@
 import * as z from 'zod'
 import type { FormSubmitEvent } from '@nuxt/ui'
 
-const fileRef = ref<HTMLInputElement>()
+const LOG_LEVEL = import.meta.env.LOG_LEVEL || 'debug'
+
+function debug(message: string, data?: unknown) {
+  if (LOG_LEVEL === 'debug') {
+    console.debug(`[settings/index] ${message}`, data ?? '')
+  }
+}
+
+const toast = useToast()
+const router = useRouter()
+const { resetPolygon } = useProducts()
 
 const profileSchema = z.object({
-  name: z.string().min(2, 'Too short'),
-  email: z.string().email('Invalid email'),
-  username: z.string().min(2, 'Too short'),
-  avatar: z.string().optional(),
-  bio: z.string().optional()
+  shopName: z.string().min(2, 'Слишком короткое название'),
+  description: z.string().optional(),
+  avatar: z.string().optional()
 })
 
 type ProfileSchema = z.output<typeof profileSchema>
 
 const profile = reactive<Partial<ProfileSchema>>({
-  name: 'Benjamin Canac',
-  email: 'ben@nuxtlabs.com',
-  username: 'benjamincanac',
-  avatar: undefined,
-  bio: undefined
+  shopName: 'Мой магазин',
+  description: 'Демо-магазин для тестирования ИИ-агентов на полигоне Seller Marketplace.',
+  avatar: undefined
 })
-const toast = useToast()
+
 async function onSubmit(event: FormSubmitEvent<ProfileSchema>) {
+  debug('profile save', { shopName: event.data.shopName })
   toast.add({
-    title: 'Success',
-    description: 'Your settings have been updated.',
+    title: 'Готово',
+    description: 'Настройки сохранены.',
     icon: 'i-lucide-check',
     color: 'success'
   })
-  console.log(event.data)
 }
 
-function onFileChange(e: Event) {
-  const input = e.target as HTMLInputElement
+const resetModalOpen = ref(false)
 
-  if (!input.files?.length) {
-    return
-  }
-
-  profile.avatar = URL.createObjectURL(input.files[0]!)
-}
-
-function onFileClick() {
-  fileRef.value?.click()
+function confirmReset() {
+  debug('resetPolygon triggered')
+  resetPolygon()
+  toast.add({
+    title: 'Полигон сброшен',
+    description: 'Все товары восстановлены из демо-набора.',
+    color: 'warning',
+    icon: 'i-lucide-rotate-ccw'
+  })
+  resetModalOpen.value = false
+  router.push('/')
 }
 </script>
 
@@ -55,15 +62,15 @@ function onFileClick() {
     @submit="onSubmit"
   >
     <UPageCard
-      title="Profile"
-      description="These informations will be displayed publicly."
+      title="Профиль магазина"
+      description="Эта информация будет отображаться на странице вашего магазина."
       variant="naked"
       orientation="horizontal"
       class="mb-4"
     >
       <UButton
         form="settings"
-        label="Save changes"
+        label="Сохранить"
         color="neutral"
         type="submit"
         class="w-fit lg:ms-auto"
@@ -72,87 +79,76 @@ function onFileClick() {
 
     <UPageCard variant="subtle">
       <UFormField
-        name="name"
-        label="Name"
-        description="Will appear on receipts, invoices, and other communication."
+        name="shopName"
+        label="Название магазина"
+        description="Будет отображаться на странице магазина и в чеках."
         required
         class="flex max-sm:flex-col justify-between items-start gap-4"
       >
         <UInput
-          v-model="profile.name"
+          v-model="profile.shopName"
           autocomplete="off"
+          data-testid="settings-shop-name"
         />
       </UFormField>
       <USeparator />
       <UFormField
-        name="email"
-        label="Email"
-        description="Used to sign in, for email receipts and product updates."
-        required
-        class="flex max-sm:flex-col justify-between items-start gap-4"
-      >
-        <UInput
-          v-model="profile.email"
-          type="email"
-          autocomplete="off"
-        />
-      </UFormField>
-      <USeparator />
-      <UFormField
-        name="username"
-        label="Username"
-        description="Your unique username for logging in and your profile URL."
-        required
-        class="flex max-sm:flex-col justify-between items-start gap-4"
-      >
-        <UInput
-          v-model="profile.username"
-          type="username"
-          autocomplete="off"
-        />
-      </UFormField>
-      <USeparator />
-      <UFormField
-        name="avatar"
-        label="Avatar"
-        description="JPG, GIF or PNG. 1MB Max."
-        class="flex max-sm:flex-col justify-between sm:items-center gap-4"
-      >
-        <div class="flex flex-wrap items-center gap-3">
-          <UAvatar
-            :src="profile.avatar"
-            :alt="profile.name"
-            size="lg"
-          />
-          <UButton
-            label="Choose"
-            color="neutral"
-            @click="onFileClick"
-          />
-          <input
-            ref="fileRef"
-            type="file"
-            class="hidden"
-            accept=".jpg, .jpeg, .png, .gif"
-            @change="onFileChange"
-          >
-        </div>
-      </UFormField>
-      <USeparator />
-      <UFormField
-        name="bio"
-        label="Bio"
-        description="Brief description for your profile. URLs are hyperlinked."
+        name="description"
+        label="Описание"
+        description="Краткое описание вашего магазина."
         class="flex max-sm:flex-col justify-between items-start gap-4"
         :ui="{ container: 'w-full' }"
       >
         <UTextarea
-          v-model="profile.bio"
+          v-model="profile.description"
           :rows="5"
           autoresize
           class="w-full"
+          data-testid="settings-description"
         />
       </UFormField>
     </UPageCard>
+
+    <UPageCard
+      title="Полигон"
+      description="Сбросить все данные полигона к демо-набору."
+      variant="naked"
+      orientation="horizontal"
+      class="mt-4 mb-4"
+    >
+      <UButton
+        label="Сбросить полигон"
+        icon="i-lucide-rotate-ccw"
+        color="error"
+        variant="outline"
+        data-testid="settings-reset-polygon"
+        @click="resetModalOpen = true"
+      />
+    </UPageCard>
+
+    <UModal
+      v-model:open="resetModalOpen"
+      title="Сбросить полигон?"
+      description="Это удалит все товары и восстановит демо-набор. Действие нельзя отменить."
+    >
+      <template #body>
+        <div class="flex justify-end gap-2">
+          <UButton
+            label="Отмена"
+            color="neutral"
+            variant="subtle"
+            @click="resetModalOpen = false"
+          />
+          <UButton
+            label="Сбросить"
+            color="error"
+            variant="solid"
+            icon="i-lucide-rotate-ccw"
+            data-testid="settings-reset-confirm"
+            @click="confirmReset"
+          />
+        </div>
+      </template>
+    </UModal>
   </UForm>
 </template>
